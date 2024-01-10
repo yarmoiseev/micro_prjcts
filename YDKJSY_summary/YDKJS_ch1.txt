@@ -1,0 +1,33 @@
+--> My experience not only as a developer but in teaching many other developers tells me: you will always be more effective in your development work if you more completely understand how your code works than you are solely just getting it to produce a desired outcome.I
+In other words, good enough to work is not, and should not be, good enough.
+
+--> Обратная совместимость JS (backward-compatibility) (HTML/CSS forward-compatibility):
+Для forward-compatibility в JS используют:
+Транспайлеры для нового синтаксиса.
+Полифилы для новых API.
+
+--> Компиляция или интерпертация.
+Зависит от того, как обрабатываются ошибки
+JS анализируется (parsing) перед запуском. Чтобы выявить серьезные ошибки (например, неправильный синтаксис).
+So JS is a parsed language, but is it compiled?
+ответ скорее да, чем нет, т.к. проанализированный JS конвертируется в binary и движки редко возвращаются к оригиналу. Parsing > byte code > JS VM
+
+Interestingly, while Java and JavaScript are very different languages, the question of interpreted/compiled is pretty closely related between them!
+
+So what do these nitty-gritty details boil down to? Step back and consider the entire flow of a JS source program:
+
+1. After a program leaves a developer's editor, it gets transpiled by Babel, then packed by Webpack (and perhaps half a dozen other build processes), then it gets delivered in that very different form to a JS engine.
+2. The JS engine parses the code to an AST. (Abstract Syntax Tree)
+3. Then the engine converts that AST to a kind-of byte code, a binary intermediate representation (IR), which is then refined/converted even further by the optimizing JIT compiler.
+4. Finally, the JS VM executes the program.
+
+--> Web assembly
+ASM.js - Подмножество js которое пишется так, чтобы работать максимально эффективно на JS движке. Транспилируется из языков со строгой типизацией.
+
+WASM - появился несколько лет спустя. Отличие от ASM.js в том, что выходной код не похож на JS, а скорее на ассемблер. Чтобы обойти задержки на анализе/компиляции (она просто скипается, т.к. создается сразу бинарник для движка).
+
+
+--> Use Strict
+Если перед  "use strict" добавить хоть символ, то работать он не будет и ты об этом не узнаешь. Но можно активировать его на уровне ф-ции, а не файла, тогда любые символы до это ок. При этом стрикт мод на уровне файла запрещает стрикт мод на уровне ф-ции.
+
+                                                                                                                    
