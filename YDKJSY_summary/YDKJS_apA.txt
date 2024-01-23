@@ -1,0 +1,36 @@
+--> Values vs. References
+При передаче/присваивании (assign/pass) примитива, значение копируется
+
+var myName = "Kyle";
+
+var yourName = myName;
+
+myName = "Frank";
+
+console.log(myName);
+// Frank
+
+console.log(yourName);
+// Kyle
+
+В отличие от Объектных типов, где передается/присваивается ссылка
+
+Итого: JS решает что копировть, ссылку или значение, в зависимости от типа значения.
+
+--> Function forms
+анонимная ф-ция, если между function и параметрами (...) нет названия.
+
+var awesomeFunction = function(coolThings) {
+    // ..
+    return amazingStuff;
+};
+
+Но при этом с ES6, JS делает "name inference" для аноноимных ф-ций
+
+awesomeFunction.name;
+// "awesomeFunction"
+
+Но только в случаях:
+- присваивания =
+- передачи ф-ции как аргумент
+- 
