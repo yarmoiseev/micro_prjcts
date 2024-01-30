@@ -16,8 +16,22 @@ const updateUI = () => {
   }
 };
 
+const deleteMovie = (movieId) => {
+  let movieIndex = 0;
+  for (const movie of movies) {
+    if (movie.id === movieId) {
+      break;
+    }
+    movieIndex++;
+  }
+  movies.splice(movieIndex, 1);
+  const listRoot = document.getElementById("movie-list");
+  listRoot.children[movieIndex].remove();
+};
+
 const deleteMovieHandler = (movieId) => {
-  //TODO 2^44
+	const deleteMovieModal
+  //deleteMovie(movieId);
 };
 
 const renderMovieElement = (id, title, imageUrl, rating) => {
@@ -70,6 +84,7 @@ const addMovieHandler = () => {
     +ratingValue > 5
   ) {
     alert("Please, enter valid values (rating between 1 and 5)");
+    return;
   }
 
   const newMovie = {
