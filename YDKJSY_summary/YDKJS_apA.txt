@@ -32,5 +32,39 @@ awesomeFunction.name;
 
 Но только в случаях:
 - присваивания =
-- передачи ф-ции как аргумент
-- 
+Не происходит:
+- При передачи ф-ционального выражения ч-з аргумент ф-ции (.name будет пустым, console: "anonymous function")
+
+named function expression - когда имя есть:
+
+var awesomeFunction = function someName(coolThings) {
+    // ..
+    return amazingStuff;
+};
+
+awesomeFunction.name;
+// "someName"
+
+someName - привяжется в время компиляции
+awesomeFunction - в рантайме
+
+--> Coercive Conditional Comparison
+
+Упаси господь сравнивать небулиевые с булевыми, особенно строки
+
+--> Prototypal "Classes"
+
+Старый (до ES6 классов) паттерн основан на том, что все ф-ции по дефолту содержат св-во prototype (не [prototype]) которое содержит ссылку на объект прототип, на который ссылаются другие объекты, созданные с помощью вызова этой ф-ции с оператором "new".
+
+function Classroom() {
+    // ..
+}
+
+Classroom.prototype.welcome = function hello() {
+    console.log("Welcome, students!");
+};
+
+var mathClass = new Classroom();
+
+mathClass.welcome();
+// Welcome, students!

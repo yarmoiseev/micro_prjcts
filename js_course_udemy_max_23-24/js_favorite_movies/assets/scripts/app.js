@@ -1,5 +1,4 @@
-
-const addMovieButton = document.querySelector("header button");
+const startAddMovieButton = document.querySelector("header button");
 const addMovieModal = document.getElementById("add-modal");
 const backdrop = document.getElementById("backdrop");
 const movieModalCancelButton = addMovieModal.querySelector(".btn--passive");
@@ -18,8 +17,8 @@ const updateUI = () => {
 };
 
 const deleteMovieHandler = (movieId) => {
-	//TODO 2^44
-}
+  //TODO 2^44
+};
 
 const renderMovieElement = (id, title, imageUrl, rating) => {
   const newMovieElement = document.createElement("li");
@@ -33,7 +32,7 @@ const renderMovieElement = (id, title, imageUrl, rating) => {
 		<p>${rating}/5 stars</p>
 	</div>
 	`;
-	newMovieElement.addEventListener('click', deleteMovieHandler.bind(null, id))
+  newMovieElement.addEventListener("click", deleteMovieHandler.bind(null, id));
   const listRoot = document.getElementById("movie-list");
   listRoot.append(newMovieElement);
 };
@@ -74,7 +73,7 @@ const addMovieHandler = () => {
   }
 
   const newMovie = {
-		id: Math.random().toString(),
+    id: Math.random().toString(),
     title: titleValue,
     image: imageUrlValue,
     rating: ratingValue,
@@ -84,7 +83,12 @@ const addMovieHandler = () => {
   console.log(movies);
   toggleMovieModal();
   clearMovieInput();
-  renderMovieElement(newMovie.id, newMovie.title, newMovie.image, newMovie.rating);
+  renderMovieElement(
+    newMovie.id,
+    newMovie.title,
+    newMovie.image,
+    newMovie.rating
+  );
   updateUI();
 };
 
@@ -92,7 +96,7 @@ const backdropClickHandler = () => {
   toggleMovieModal();
 };
 
-addMovieButton.addEventListener("click", toggleMovieModal);
+startAddMovieButton.addEventListener("click", toggleMovieModal);
 backdrop.addEventListener("click", backdropClickHandler);
 movieModalCancelButton.addEventListener("click", cancelAddMovieHandler);
 movieModalConfirmButton.addEventListener("click", addMovieHandler);
